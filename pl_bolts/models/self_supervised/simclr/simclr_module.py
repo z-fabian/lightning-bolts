@@ -256,7 +256,7 @@ class SimCLR(LightningModule):
         pos = torch.exp(torch.sum(out_1 * out_2, dim=-1) / temperature)
         pos = torch.cat([pos, pos], dim=0)
 
-        loss = -torch.log(pos / (neg + eps)).mean()
+        loss = -torch.log(pos / neg).mean()
 
         return loss
 
